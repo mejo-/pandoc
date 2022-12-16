@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+	<id>pandoc</id>
+	<name>Pandoc</name>
+	<summary>Convert text files using pandoc</summary>
+    <description><![CDATA[Allows to convert text files from one markup to
+        another using Pandoc. It required [Pandoc](https://pandoc.org/) to
+        be installed on the Nextcloud host.
+	]]></description>
+	<version>0.0.2</version>
+	<licence>agpl</licence>
+	<author mail="jonas@freesources.org">Jonas</author>
+	<namespace>Pandoc</namespace>
+	<category>office</category>
+    <website>https://github.com/mejo-/pandoc</website>
+    <bugs>https://github.com/mejo-/pandoc/issues</bugs>
+    <repository type="git">https://github.com/mejo-/pandoc.git</repository>
+	<dependencies>
+		<nextcloud min-version="25" max-version="25" />
+	</dependencies>
+</info>
