@@ -8,6 +8,11 @@ use OCP\Files\IRootFolder;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
 use OCP\Lock\LockedException;
+use Pandoc\Exceptions\InputFileNotFound;
+use Pandoc\Exceptions\LogFileNotWriteable;
+use Pandoc\Exceptions\PandocNotFound;
+use Pandoc\Exceptions\UnknownInputFormat;
+use Pandoc\Exceptions\UnknownOutputFormat;
 use Pandoc\Pandoc;
 
 class ConvertService {
@@ -24,11 +29,25 @@ class ConvertService {
 	 * @param string $from
 	 *
 	 * @return string
-	 * @throws NotPermittedException
-	 * @throws NotFoundException
 	 * @throws LockedException
+	 * @throws NotFoundException
+	 * @throws NotPermittedException
+	 * @throws InputFileNotFound
+	 * @throws LogFileNotWriteable
+	 * @throws UnknownInputFormat
+	 * @throws UnknownOutputFormat
+	 * @throws PandocNotFound
 	 */
-	public function convertFile(string $userId, int $fileId, string $to = 'plain', string $from = 'markdown'): string {
+	public function convertFile(string $userId, int $fileId, string $to = 'plain', string $from = 'gfm'): string {
+		$pandoc = new Pandoc();
+
+		$inputFormats = $pandoc->listInputFormats();
+		if (!$inputFormats || !in_array($from, $inputFormats)) {
+			throw new NotPermittedException('Format not found in input formats: ' . $from);
+		}
+
+		// Don't further sanitize output format ($to) as we have to accept paths for LUA writers.
+
 		try {
 			$userFolder = $this->rootFolder->getUserFolder($userId);
 		} catch (NotPermittedException | NoUserException $e) {
@@ -44,15 +63,10 @@ class ConvertService {
 
 		$fileContent = $file->getContent();
 
-		if (!$fileContent) {
-			throw new NotFoundException('File has empty content: ' . $fileId);
-		}
-
-		$pandoc = new Pandoc();
 		return $pandoc
-			->from($from)
-			->input($file->getContent())
-			->to($to)
-			->run();
+			->input($fileContent)
+			->option('from', $from)
+			->option('to', $to)
+			->execute();
 	}
 }

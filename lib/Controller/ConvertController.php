@@ -31,7 +31,7 @@ class ConvertController extends Controller {
 	 * @return DataResponse
 	 * @throws \OCP\Files\NotPermittedException
 	 */
-	public function convertFile(int $fileId, string $to = 'plain', string $from = 'markdown'): DataResponse {
+	public function convertFile(int $fileId, string $to = 'plain', string $from = 'gfm'): DataResponse {
 		$userId = $this->userSession->getUser()->getUID();
 		$output = $this->convertService->convertFile($userId, $fileId, $to, $from);
 
