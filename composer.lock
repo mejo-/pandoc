@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "35beebb0535a95e30a25ccc73e3ae3ce",
+    "content-hash": "07b8c5183af4a6f14b507dc32bcc088b",
     "packages": [
         {
             "name": "symfony/polyfill-php80",
@@ -885,16 +885,16 @@
         },
         {
             "name": "nextcloud/ocp",
-            "version": "v24.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextcloud-deps/ocp.git",
-                "reference": "f032acdff1502a7323f95a6524d163290f43b446"
+                "reference": "14533576a8372ccfd1938e363c00e17ae1032605"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/f032acdff1502a7323f95a6524d163290f43b446",
-                "reference": "f032acdff1502a7323f95a6524d163290f43b446",
+                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/14533576a8372ccfd1938e363c00e17ae1032605",
+                "reference": "14533576a8372ccfd1938e363c00e17ae1032605",
                 "shasum": ""
             },
             "require": {
@@ -903,10 +903,11 @@
                 "psr/event-dispatcher": "^1.0",
                 "psr/log": "^1.1"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "24.0.0-dev"
+                    "dev-master": "26.0.0-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -921,9 +922,10 @@
             ],
             "description": "Composer package containing Nextcloud's public API (classes, interfaces)",
             "support": {
-                "source": "https://github.com/nextcloud-deps/ocp/tree/v24.0.1"
+                "issues": "https://github.com/nextcloud-deps/ocp/issues",
+                "source": "https://github.com/nextcloud-deps/ocp/tree/master"
             },
-            "time": "2022-06-02T14:16:47+00:00"
+            "time": "2022-12-21T00:33:51+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -4006,7 +4008,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "nextcloud/ocp": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
