@@ -19,8 +19,8 @@ describe('Open pandoc app frontend', function() {
 
 	it('Without non-integer fileIds in query string', function() {
 		cy.visit('/apps/pandoc?fileIds=test')
-		cy.get('.empty-content__action')
-			.should('contain', 'Invalid fileId test')
+		cy.get('.toast-error')
+			.should('contain', 'Invalid fileId: test')
 	})
 
 	it('With non-existent fileIds in query string', function() {

@@ -7,7 +7,13 @@
 				<DownloadIcon />
 			</template>
 			<template #action>
-				...
+				<NcProgressBar :value="loadingProgress" size="medium">
+					{{ loadingProgress }}
+				</NcProgressBar>
+				<div class="load-message">
+					{{ t('pandoc', 'Converting files:') }}
+					{{ loadTotal ? `${loadCount} / ${loadTotal}` : '' }}
+				</div>
 			</template>
 		</NcEmptyContent>
 
@@ -37,7 +43,8 @@
 <script>
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
-import { NcEmptyContent } from '@nextcloud/vue'
+import { showError } from '@nextcloud/dialogs'
+import { NcEmptyContent, NcProgressBar } from '@nextcloud/vue'
 import AlertOctagonIcon from 'vue-material-design-icons/AlertOctagon.vue'
 import DownloadIcon from 'vue-material-design-icons/Download.vue'
 
@@ -48,6 +55,7 @@ export default {
 		AlertOctagonIcon,
 		DownloadIcon,
 		NcEmptyContent,
+		NcProgressBar,
 	},
 
 	props: {
@@ -62,10 +70,34 @@ export default {
 			fileContents: {},
 			error: null,
 			loading: true,
+			loadCount: 0,
+			loadTotal: 0,
 		}
 	},
 
+	computed: {
+		fileIdInts() {
+			// Turn comma-separated fileIds into array, filter out non-numbers
+			return this.fileIds.split(',').map((string) => {
+				const id = parseInt(string)
+				if (!id || isNaN(id)) {
+					console.error('Invalid fileId ', string)
+					showError(t('pandoc', 'Invalid fileId:') + ' ' + string)
+					return undefined
+				}
+				return id
+			}).filter(id => id !== undefined)
+		},
+
+		loadingProgress() {
+			return this.loadTotal
+				? this.loadCount / this.loadTotal * 100
+				: 0
+		},
+	},
+
 	mounted() {
+		this.loadTotal = this.fileIdInts.length
 		this.getFileContents()
 	},
 
@@ -79,16 +111,10 @@ export default {
 		},
 
 		async getFileContents() {
-			for (const fileIdString of this.fileIds.split(',')) {
-				const fileId = parseInt(fileIdString)
-				if (!fileId || isNaN(fileId)) {
-					console.error('Invalid fileId ', fileIdString)
-					this.error = t('pandoc', 'Invalid fileId ' + fileIdString)
-					this.loading = false
-					break
-				}
+			for (const fileId of this.fileIdInts) {
 				try {
 					this.fileContents[fileId] = await this.convertFileContent(fileId)
+					this.loadCount += 1
 				} catch (e) {
 					console.error('Failed to convert the content of file with fileId ', fileId)
 					this.error = t('pandoc', 'Could not convert the content of file with fileId ' + fileId)
@@ -116,5 +142,13 @@ export default {
 
 .file-content-pre {
 	white-space: pre-wrap;
+}
+
+.progress-bar {
+	margin-top: 8px;
+}
+
+.load-message {
+	color: var(--color-text-maxcontrast);
 }
 </style>
