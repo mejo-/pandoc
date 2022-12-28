@@ -68,6 +68,15 @@ lint-appinfo: $(BUILD_TOOLS_DIR)/info.xsd
 	xmllint appinfo/info.xml --noout \
 		--schema $(BUILD_TOOLS_DIR)/info.xsd
 
+# Development
+
+# Update psalm baseline
+php-psalm-baseline:
+	$(CURDIR)/vendor/bin/psalm.phar --set-baseline=tests/psalm-baseline.xml lib/
+	$(CURDIR)/vendor/bin/psalm.phar --update-baseline lib/
+
+# Build
+
 build-js-dev:
 	$(NPM) run dev
 

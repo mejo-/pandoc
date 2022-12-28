@@ -29,14 +29,14 @@ class ConvertService {
 	 * @param string $from
 	 *
 	 * @return string
+	 * @throws InputFileNotFound
 	 * @throws LockedException
+	 * @throws LogFileNotWriteable
 	 * @throws NotFoundException
 	 * @throws NotPermittedException
-	 * @throws InputFileNotFound
-	 * @throws LogFileNotWriteable
+	 * @throws PandocNotFound
 	 * @throws UnknownInputFormat
 	 * @throws UnknownOutputFormat
-	 * @throws PandocNotFound
 	 */
 	public function convertFile(string $userId, int $fileId, string $to = 'plain', string $from = 'gfm'): string {
 		$pandoc = new Pandoc();
