@@ -6,7 +6,7 @@ use OC\Files\Node\File;
 use OC\Files\Node\Folder;
 use OCA\Pandoc\Service\ConvertService;
 use OCP\Files\IRootFolder;
-use OCP\Files\NotFoundException;
+use OCP\Files\NotPermittedException;
 use PHPUnit\Framework\TestCase;
 
 class ConvertServiceTest extends TestCase {
@@ -51,9 +51,9 @@ bold text
 		self::assertEquals($toContent, $this->service->convertFile('user', 0, 'plain', 'markdown'));
 	}
 
-	public function testConvertEmptyContent(): void {
+	public function testConvertInvalidInputFormat(): void {
 		$fromContent = '';
-		$this->expectException(NotFoundException::class);
-		$this->service->convertFile('user', 0, 'plain', 'markdown');
+		$this->expectException(NotPermittedException::class);
+		$this->service->convertFile('user', 0, 'plain', 'invalid');
 	}
 }
