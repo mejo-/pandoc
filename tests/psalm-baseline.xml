@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="dev-master@">
+  <file src="lib/Service/ConvertService.php">
+    <UndefinedClass occurrences="3">
+      <code>$e</code>
+      <code>File</code>
+      <code>NoUserException</code>
+    </UndefinedClass>
+  </file>
+</files>
