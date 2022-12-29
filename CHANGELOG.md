@@ -9,6 +9,7 @@
 ### 🚧Updates & Tooling
 - 🧪 Add static PHP code analyzing with psalm. (#4)
 - 👷 Makefile: minor improvements.
+- 🔌 Update NPM dependencies.
 
 
 ## 0.2.0 - 2022.12.28
