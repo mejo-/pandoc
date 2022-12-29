@@ -26,7 +26,7 @@ CERT_DIR:=$(HOME)/.nextcloud/certificates
 # So far just for removing releases again
 NEXTCLOUD_API_URL:=https://apps.nextcloud.com/api/v1/apps/$(APP_NAME)
 
-GITHUB_PROJECT_URL:=https://github.com/-mejo/$(APP_NAME)
+GITHUB_PROJECT_URL:=https://github.com/mejo-/$(APP_NAME)
 
 # Install build tools
 composer:
