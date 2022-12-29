@@ -5,7 +5,7 @@
 	<name>Pandoc</name>
 	<summary>Convert text files using pandoc</summary>
     <description><![CDATA[Allows to convert text files from one markup to
-        another using Pandoc. It required [Pandoc](https://pandoc.org/) to
+        another using Pandoc. It requires [Pandoc](https://pandoc.org/) to
         be installed on the Nextcloud host.
 	]]></description>
 	<version>0.2.0</version>

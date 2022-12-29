@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace OCA\Pandoc\AppInfo;
 
+use OCA\Collectives\Events\CollectivesLoadAdditionalScriptsEvent;
+use OCA\Pandoc\Listeners\CollectivesLoadAdditionalScriptsListener;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
@@ -21,6 +23,7 @@ class Application extends App implements IBootstrap {
 	 */
 	public function register(IRegistrationContext $context): void {
 		include_once __DIR__ . '/../../vendor/autoload.php';
+		$context->registerEventListener(CollectivesLoadAdditionalScriptsEvent::class, CollectivesLoadAdditionalScriptsListener::class);
 	}
 
 	public function boot(IBootContext $context): void {

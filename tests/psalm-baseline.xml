@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="dev-master@">
+  <file src="lib/AppInfo/Application.php">
+    <UndefinedClass occurrences="1">
+      <code>CollectivesLoadAdditionalScriptsEvent</code>
+    </UndefinedClass>
+  </file>
   <file src="lib/Service/ConvertService.php">
     <UndefinedClass occurrences="3">
       <code>$e</code>

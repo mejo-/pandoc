@@ -1,3 +1,3 @@
 <?php
 
-script('pandoc', 'pandoc-main');
+script('pandoc', 'pandoc-pandoc');
