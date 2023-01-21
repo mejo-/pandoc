@@ -8,7 +8,8 @@
 				{{ t('pandoc', 'Missing fileIds (in URL query string)') }}
 			</template>
 		</NcEmptyContent>
-		<FileContent v-if="fileIds" :file-ids="fileIds" />
+		<FileContent v-if="fileIds"
+			:file-ids="fileIds" />
 	</NcAppContent>
 </template>
 

@@ -1,5 +1,11 @@
 <template>
 	<div>
+		<div v-show="!loading" class="buttons">
+			<NcActionButton icon="icon-menu-sidebar"
+				:aria-label="t('pandoc', 'Open sidebar')"
+				@click="toggleSidebar" />
+		</div>
+
 		<!-- loading -->
 		<NcEmptyContent v-show="loading"
 			:title="t('pandoc', 'Converting files')">
@@ -30,9 +36,10 @@
 
 		<!-- converted content -->
 		<div v-show="!loading && !error" class="file-content">
-			<div v-for="(content, fileId, index) in fileContents" :key="fileId">
-				<pre class="file-content-pre">{{ content }}</pre>
-				<template v-if="index !== Object.keys(fileContents).length - 1">
+			<div v-for="(file, index) in filteredConvertedFiles"
+				:key="file.fileId">
+				<pre class="file-content-pre">{{ file.content }}</pre>
+				<template v-if="index !== filteredConvertedFiles.length - 1">
 					<br><hr><br>
 				</template>
 			</div>
@@ -44,17 +51,24 @@
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
 import { showError } from '@nextcloud/dialogs'
+import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
 import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
 import NcProgressBar from '@nextcloud/vue/dist/Components/NcProgressBar.js'
 import AlertOctagonIcon from 'vue-material-design-icons/AlertOctagon.vue'
+import ContentPasteIcon from 'vue-material-design-icons/ContentPaste.vue'
+import CheckIcon from 'vue-material-design-icons/Check.vue'
 import DownloadIcon from 'vue-material-design-icons/Download.vue'
+import { mapGetters, mapMutations, mapState } from 'vuex'
 
 export default {
 	name: 'FileContent',
 
 	components: {
 		AlertOctagonIcon,
+		CheckIcon,
+		ContentPasteIcon,
 		DownloadIcon,
+		NcActionButton,
 		NcEmptyContent,
 		NcProgressBar,
 	},
@@ -68,7 +82,6 @@ export default {
 
 	data() {
 		return {
-			fileContents: {},
 			error: null,
 			loading: true,
 			loadCount: 0,
@@ -77,6 +90,22 @@ export default {
 	},
 
 	computed: {
+		...mapState(['convertedFiles']),
+
+		...mapGetters([
+			'displayedFileContents',
+			'filteredConvertedFiles',
+		]),
+
+		copyButtonText() {
+			if (this.copied) {
+				return this.copySuccess
+					? t('pandoc', 'Copied')
+					: t('pandoc', 'Could not copy')
+			}
+			return t('pandoc', 'Copy to clipboard')
+		},
+
 		fileIdInts() {
 			// Turn comma-separated fileIds into array, filter out non-numbers
 			return this.fileIds.split(',').map((string) => {
@@ -103,18 +132,26 @@ export default {
 	},
 
 	methods: {
+		...mapMutations([
+			'addConvertedFile',
+			'toggleSidebar',
+		]),
+
 		async convertFileContent(fileId) {
 			const response = await axios({
 				method: 'GET',
 				url: generateUrl('/apps/pandoc/convertFile?fileId=' + fileId),
 			})
-			return response.data.content
+			return response.data
 		},
 
 		async getFileContents() {
 			for (const fileId of this.fileIdInts) {
 				try {
-					this.fileContents[fileId] = await this.convertFileContent(fileId)
+					const file = await this.convertFileContent(fileId)
+					file.hide = false
+					file.fileId = fileId
+					this.addConvertedFile(file)
 					this.loadCount += 1
 				} catch (e) {
 					console.error('Failed to convert the content of file with fileId ', fileId)
@@ -130,7 +167,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.buttons {
+	position: relative;
+	display: flex;
+	justify-content: flex-end;
+	padding-top: 8px;
+	padding-right: 8px;
+	// make buttons float
+	margin-bottom: -52px;
+	z-index: 1;
+}
+
 .file-content {
 	max-width: 670px;
 	margin: auto;
