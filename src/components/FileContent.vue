@@ -44,7 +44,8 @@
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
 import { showError } from '@nextcloud/dialogs'
-import { NcEmptyContent, NcProgressBar } from '@nextcloud/vue'
+import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
+import NcProgressBar from '@nextcloud/vue/dist/Components/NcProgressBar.js'
 import AlertOctagonIcon from 'vue-material-design-icons/AlertOctagon.vue'
 import DownloadIcon from 'vue-material-design-icons/Download.vue'
 
