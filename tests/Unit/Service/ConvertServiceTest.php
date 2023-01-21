@@ -4,6 +4,7 @@ namespace Unit\Service;
 
 use OC\Files\Node\File;
 use OC\Files\Node\Folder;
+use OCA\Pandoc\Model\ConvertedFile;
 use OCA\Pandoc\Service\ConvertService;
 use OCP\Files\IRootFolder;
 use OCP\Files\NotPermittedException;
@@ -46,9 +47,13 @@ bold text
 
 -   list
 ';
+		$fileName = 'name';
+		$convertedFile = new ConvertedFile($fileName, $toContent);
+		$this->file->method('getName')
+			->willReturn($fileName);
 		$this->file->method('getContent')
 			->willReturn($fromContent);
-		self::assertEquals($toContent, $this->service->convertFile('user', 0, 'plain', 'markdown'));
+		self::assertEquals($convertedFile, $this->service->convertFile('user', 0, 'plain', 'markdown'));
 	}
 
 	public function testConvertInvalidInputFormat(): void {

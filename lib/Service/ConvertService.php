@@ -4,6 +4,7 @@ namespace OCA\Pandoc\Service;
 
 use OC\Files\Node\File;
 use OC\User\NoUserException;
+use OCA\Pandoc\Model\ConvertedFile;
 use OCP\Files\IRootFolder;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
@@ -38,7 +39,7 @@ class ConvertService {
 	 * @throws UnknownInputFormat
 	 * @throws UnknownOutputFormat
 	 */
-	public function convertFile(string $userId, int $fileId, string $to = 'plain', string $from = 'gfm'): string {
+	public function convertFile(string $userId, int $fileId, string $to = 'plain', string $from = 'gfm'): ConvertedFile {
 		$pandoc = new Pandoc();
 
 		$inputFormats = $pandoc->listInputFormats();
@@ -63,10 +64,10 @@ class ConvertService {
 
 		$fileContent = $file->getContent();
 
-		return $pandoc
+		return new ConvertedFile($file->getName(), $pandoc
 			->input($fileContent)
 			->option('from', $from)
 			->option('to', $to)
-			->execute();
+			->execute());
 	}
 }

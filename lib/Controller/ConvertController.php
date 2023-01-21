@@ -40,10 +40,11 @@ class ConvertController extends Controller {
 			$to = $this->config->getAppValue('pandoc', 'default_output_format', 'plain');
 		}
 		$userId = $this->userSession->getUser()->getUID();
-		$output = $this->convertService->convertFile($userId, $fileId, $to, $from);
+		$convertedFile = $this->convertService->convertFile($userId, $fileId, $to, $from);
 
 		return new DataResponse([
-			'content' => $output,
+			'name' => $convertedFile->getName(),
+			'content' => $convertedFile->getContent(),
 		]);
 	}
 }
