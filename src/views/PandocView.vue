@@ -13,7 +13,8 @@
 </template>
 
 <script>
-import { NcAppContent, NcEmptyContent } from '@nextcloud/vue'
+import NcAppContent from '@nextcloud/vue/dist/Components/NcAppContent.js'
+import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
 import AlertOctagonIcon from 'vue-material-design-icons/AlertOctagon.vue'
 import FileContent from '../components/FileContent.vue'
 
