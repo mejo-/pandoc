@@ -1,6 +1,13 @@
 <template>
 	<div>
 		<div v-show="!loading" class="buttons">
+			<NcButton @click="copyContent">
+				<template #icon>
+					<CheckIcon v-if="copySuccess" :size="20" />
+					<ContentPasteIcon v-else :size="20" />
+				</template>
+				{{ copyButtonText }}
+			</NcButton>
 			<NcActionButton icon="icon-menu-sidebar"
 				:aria-label="t('pandoc', 'Open sidebar')"
 				@click="toggleSidebar" />
@@ -52,6 +59,7 @@ import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
 import { showError } from '@nextcloud/dialogs'
 import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
+import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
 import NcProgressBar from '@nextcloud/vue/dist/Components/NcProgressBar.js'
 import AlertOctagonIcon from 'vue-material-design-icons/AlertOctagon.vue'
@@ -59,6 +67,7 @@ import ContentPasteIcon from 'vue-material-design-icons/ContentPaste.vue'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
 import DownloadIcon from 'vue-material-design-icons/Download.vue'
 import { mapGetters, mapMutations, mapState } from 'vuex'
+import CopyToClipboardMixin from '../mixins/CopyToClipboardMixin.js'
 
 export default {
 	name: 'FileContent',
@@ -69,9 +78,14 @@ export default {
 		ContentPasteIcon,
 		DownloadIcon,
 		NcActionButton,
+		NcButton,
 		NcEmptyContent,
 		NcProgressBar,
 	},
+
+	mixins: [
+		CopyToClipboardMixin,
+	],
 
 	props: {
 		fileIds: {
@@ -162,6 +176,10 @@ export default {
 			}
 
 			this.loading = false
+		},
+
+		copyContent() {
+			this.copyToClipboard(this.displayedFileContents)
 		},
 	},
 }
