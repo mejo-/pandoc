@@ -63,8 +63,12 @@ class ConvertService {
 		$file = $files[0];
 
 		$fileContent = $file->getContent();
+		// TODO: only covers markdown files so far
+		$fileName = $file->getName() === 'Readme.md'
+			? basename(dirname($file->getPath()))
+			: basename($file->getName(), '.md');
 
-		return new ConvertedFile($file->getName(), $pandoc
+		return new ConvertedFile($fileName, $pandoc
 			->input($fileContent)
 			->option('from', $from)
 			->option('to', $to)
