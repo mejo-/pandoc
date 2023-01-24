@@ -8,7 +8,7 @@
         another using Pandoc. It requires [Pandoc](https://pandoc.org/) to
         be installed on the Nextcloud host.
 	]]></description>
-	<version>0.3.0</version>
+	<version>0.4.0</version>
 	<licence>agpl</licence>
 	<author mail="jonas@freesources.org">Jonas</author>
 	<namespace>Pandoc</namespace>
