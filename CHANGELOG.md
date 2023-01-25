@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1 - 2023.01.25
+
+### 🐛Fixes
+- 🐛 Fix release script to not exclude vendor files.
+
+
 ## 0.4.0 - 2023.01.24
 
 ### ✨New
