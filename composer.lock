@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eaab307599458c679d3efa3c02896135",
+    "content-hash": "58efae0a055c0de3529781a01b121811",
     "packages": [
         {
             "name": "symfony/polyfill-php80",
@@ -91,16 +91,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v5.4.19",
+            "version": "v5.4.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "c5ba874c9b636dbccf761e22ce750e88ec3f55e1"
+                "reference": "d4ce417ebcb0b7d090b4c178ed6d3accc518e8bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/c5ba874c9b636dbccf761e22ce750e88ec3f55e1",
-                "reference": "c5ba874c9b636dbccf761e22ce750e88ec3f55e1",
+                "url": "https://api.github.com/repos/symfony/process/zipball/d4ce417ebcb0b7d090b4c178ed6d3accc518e8bd",
+                "reference": "d4ce417ebcb0b7d090b4c178ed6d3accc518e8bd",
                 "shasum": ""
             },
             "require": {
@@ -133,7 +133,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v5.4.19"
+                "source": "https://github.com/symfony/process/tree/v5.4.21"
             },
             "funding": [
                 {
@@ -149,20 +149,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-01-01T08:32:19+00:00"
+            "time": "2023-02-21T19:46:44+00:00"
         },
         {
             "name": "ueberdosis/pandoc",
-            "version": "0.8.0",
+            "version": "0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ueberdosis/pandoc.git",
-                "reference": "fa1a575f5580cd7cfcfc0245c69562e11644b671"
+                "reference": "c5f16d52170e0622d6d3ef8350e08d0799809049"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ueberdosis/pandoc/zipball/fa1a575f5580cd7cfcfc0245c69562e11644b671",
-                "reference": "fa1a575f5580cd7cfcfc0245c69562e11644b671",
+                "url": "https://api.github.com/repos/ueberdosis/pandoc/zipball/c5f16d52170e0622d6d3ef8350e08d0799809049",
+                "reference": "c5f16d52170e0622d6d3ef8350e08d0799809049",
                 "shasum": ""
             },
             "require": {
@@ -197,7 +197,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ueberdosis/pandoc/issues",
-                "source": "https://github.com/ueberdosis/pandoc/tree/0.8.0"
+                "source": "https://github.com/ueberdosis/pandoc/tree/0.9.0"
             },
             "funding": [
                 {
@@ -205,7 +205,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-01-27T11:05:07+00:00"
+            "time": "2023-02-28T08:00:44+00:00"
         }
     ],
     "packages-dev": [
