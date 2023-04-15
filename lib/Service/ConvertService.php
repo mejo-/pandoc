@@ -72,6 +72,7 @@ class ConvertService {
 			->input($fileContent)
 			->option('from', $from)
 			->option('to', $to)
+			->noStandalone()
 			->execute());
 	}
 }
