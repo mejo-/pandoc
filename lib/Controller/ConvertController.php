@@ -3,8 +3,8 @@
 namespace OCA\Pandoc\Controller;
 
 use OCA\Pandoc\Service\ConvertService;
-use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\DataResponse;
 use OCP\IConfig;
 use OCP\IRequest;
 use OCP\IUserSession;
@@ -15,10 +15,10 @@ class ConvertController extends Controller {
 	private IConfig $config;
 
 	public function __construct(string $appName,
-								IRequest $request,
-								ConvertService $convertService,
-								IUserSession $userSession,
-								IConfig $config) {
+		IRequest $request,
+		ConvertService $convertService,
+		IUserSession $userSession,
+		IConfig $config) {
 		parent::__construct($appName, $request);
 		$this->convertService = $convertService;
 		$this->userSession = $userSession;
