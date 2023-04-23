@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.0 - 2023.04.23
+
+### ✨New
+- ✨ Add support for Nextcloud 26.
+
+### 🚧Updates & Tooling
+- 👷 Update PHP dependencies.
+- 🔌 Update NPM dependencies.
+
+
 ## 0.4.1 - 2023.01.25
 
 ### 🐛Fixes
