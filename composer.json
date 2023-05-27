@@ -23,6 +23,6 @@
         "nextcloud/coding-standard": "^1.0",
         "nextcloud/ocp": "dev-master",
         "phpunit/phpunit": "^9.5",
-        "psalm/phar": "^5.2"
+        "psalm/phar": "^5.12"
     }
 }
