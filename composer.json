@@ -20,7 +20,7 @@
       "test:unit": "phpunit -c tests/phpunit.xml"
     },
     "require-dev": {
-        "nextcloud/coding-standard": "^1.0",
+        "nextcloud/coding-standard": "^1.1",
         "nextcloud/ocp": "dev-master",
         "phpunit/phpunit": "^9.5",
         "psalm/phar": "^5.12"
