@@ -6,7 +6,10 @@ module.exports = defineConfig({
 	e2e: {
 		setupNodeEvents(on, config) {
 			const browserify = require('@cypress/browserify-preprocessor')
+			const webpack = require('@cypress/webpack-preprocessor')
+
 			on('file:preprocessor', browserify())
+			on('file:preprocessor', webpack())
 		},
 
 		baseUrl: 'http://localhost:8081/index.php/',
