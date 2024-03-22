@@ -5,6 +5,8 @@ namespace OCA\Pandoc\Controller;
 use OCA\Pandoc\Service\ConvertService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataResponse;
+use OCP\Files\NotFoundException;
+use OCP\Files\NotPermittedException;
 use OCP\IConfig;
 use OCP\IRequest;
 use OCP\IUserSession;
@@ -28,14 +30,14 @@ class ConvertController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 *
-	 * @param int    $fileId
-	 * @param string $to
-	 * @param string $from
+	 * @param int         $fileId
+	 * @param string|null $to
+	 * @param string      $from
 	 *
-	 * @return DataResponse
-	 * @throws \OCP\Files\NotPermittedException
+	 * @throws NotFoundException
+	 * @throws NotPermittedException
 	 */
-	public function convertFile(int $fileId, string $to = null, string $from = 'gfm'): DataResponse {
+	public function convertFile(int $fileId, ?string $to = null, string $from = 'gfm'): DataResponse {
 		if (!$to) {
 			$to = $this->config->getAppValue('pandoc', 'default_output_format', 'plain');
 		}
