@@ -37,7 +37,7 @@ describe('Open pandoc app frontend', function() {
 			})
 			.then(() => {
 				cy.visit(`/apps/pandoc?fileIds=${fileId}`)
-				cy.get('.empty-content__title')
+				cy.get('.empty-content__action')
 					.should('contain', 'Converting files')
 				cy.get('.file-content-pre', { timeout: Cypress.config('defaultCommandTimeout') * 3 })
 					.should('contain', 'Paragraph with some')
