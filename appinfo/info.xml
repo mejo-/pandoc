@@ -8,7 +8,7 @@
         another using Pandoc. It requires [Pandoc](https://pandoc.org/) to
         be installed on the Nextcloud host.
 	]]></description>
-	<version>0.6.0</version>
+	<version>0.7.0</version>
 	<licence>agpl</licence>
 	<author mail="jonas@freesources.org">Jonas</author>
 	<namespace>Pandoc</namespace>
@@ -17,6 +17,6 @@
     <bugs>https://github.com/mejo-/pandoc/issues</bugs>
     <repository type="git">https://github.com/mejo-/pandoc.git</repository>
 	<dependencies>
-		<nextcloud min-version="25" max-version="27" />
+		<nextcloud min-version="25" max-version="29" />
 	</dependencies>
 </info>
