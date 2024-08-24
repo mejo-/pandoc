@@ -30,9 +30,9 @@ class ConvertController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 *
-	 * @param int         $fileId
+	 * @param int $fileId
 	 * @param string|null $to
-	 * @param string      $from
+	 * @param string $from
 	 *
 	 * @throws NotFoundException
 	 * @throws NotPermittedException

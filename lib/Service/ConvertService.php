@@ -25,7 +25,7 @@ class ConvertService {
 
 	/**
 	 * @param string $userId
-	 * @param int    $fileId
+	 * @param int $fileId
 	 * @param string $to
 	 * @param string $from
 	 *
@@ -51,7 +51,7 @@ class ConvertService {
 
 		try {
 			$userFolder = $this->rootFolder->getUserFolder($userId);
-		} catch (NotPermittedException | NoUserException $e) {
+		} catch (NotPermittedException|NoUserException $e) {
 			throw new NotPermittedException($e->getMessage(), 0, $e);
 		}
 
