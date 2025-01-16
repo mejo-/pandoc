@@ -43,6 +43,18 @@ php occ config:app:set --value="/usr/local/share/pandoc/data/bbcode_phpbb.lua"
 -- pandoc default_output_format
 ```
 
+### PDF support
+
+Pandoc requires a separate PDF engine to be used to convert files to PDF. The
+engine can be configured and will be passed as `--pdf-engine` option to pandoc
+directly.
+
+To set the pdf engine (e.g. after installing pdflatex) run:
+
+```
+occ config:app:set pandoc pdf_engine --type string --value=pdflatex
+```
+
 ## Maintainer
 
 * Jonas <jonas@freesources.org>
