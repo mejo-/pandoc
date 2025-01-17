@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="dev-master@">
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
   <file src="lib/AppInfo/Application.php">
-    <UndefinedClass occurrences="1">
-      <code>CollectivesLoadAdditionalScriptsEvent</code>
+    <MissingDependency>
+      <code><![CDATA[ConversionProvider]]></code>
+    </MissingDependency>
+    <UndefinedClass>
+      <code><![CDATA[CollectivesLoadAdditionalScriptsEvent]]></code>
     </UndefinedClass>
   </file>
   <file src="lib/Controller/ConvertController.php">
-    <InvalidMethodCall occurrences="2">
-      <code>getContent</code>
-      <code>getName</code>
+    <InvalidMethodCall>
+      <code><![CDATA[getContent]]></code>
+      <code><![CDATA[getName]]></code>
     </InvalidMethodCall>
   </file>
+  <file src="lib/ConversionProvider.php">
+    <UndefinedClass>
+      <code><![CDATA[IConversionProvider]]></code>
+    </UndefinedClass>
+  </file>
   <file src="lib/Service/ConvertService.php">
-    <MismatchingDocblockReturnType occurrences="1">
-      <code>string</code>
+    <MismatchingDocblockReturnType>
+      <code><![CDATA[string]]></code>
     </MismatchingDocblockReturnType>
   </file>
 </files>
