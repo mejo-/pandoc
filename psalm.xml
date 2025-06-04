@@ -6,7 +6,7 @@
 	xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
 	errorBaseline="tests/psalm-baseline.xml"
 	findUnusedBaselineEntry="true"
-	phpVersion="7.4"
+	phpVersion="8.0"
 >
 	<stubs>
 		<file name="tests/stub.phpstub" preloadClasses="true"/>
