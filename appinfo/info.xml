@@ -17,6 +17,6 @@
     <bugs>https://github.com/mejo-/pandoc/issues</bugs>
     <repository type="git">https://github.com/mejo-/pandoc.git</repository>
 	<dependencies>
-		<nextcloud min-version="29" max-version="30" />
+		<nextcloud min-version="29" max-version="31" />
 	</dependencies>
 </info>

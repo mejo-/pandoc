@@ -1,9 +1,10 @@
 # Changelog
 
-## 0.8.0 - 2025.06.01
+## 0.8.0 - 2025.06.04
 
 ### ✨New
-- ✨ Add support for Nextcloud 30.
+- ✨ Add support for Nextcloud 30 + 31.
+- 🧹 Remove support for Nextcloud < 29 and PHP 7.4.
 
 ### 🚧Updates & Tooling
 - 👷 Update PHP dependencies.
