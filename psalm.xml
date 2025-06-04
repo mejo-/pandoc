@@ -6,6 +6,8 @@
 	xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
 	errorBaseline="tests/psalm-baseline.xml"
 	findUnusedBaselineEntry="true"
+	findUnusedCode="false"
+	ensureOverrideAttribute="false"
 	phpVersion="8.0"
 >
 	<stubs>
@@ -17,21 +19,4 @@
 	<extraFiles>
 		<directory name="vendor/nextcloud/ocp" />
 	</extraFiles>
-		<issueHandlers>
-		<UndefinedClass>
-			<errorLevel type="suppress">
-				<referencedClass name="OC" />
-				<referencedClass name="Doctrine\DBAL\Types\Types"/>
-			</errorLevel>
-		</UndefinedClass>
-		<UndefinedDocblockClass>
-			<errorLevel type="suppress">
-				<referencedClass name="Doctrine\DBAL\Driver\Statement" />
-				<referencedClass name="Doctrine\DBAL\Schema\Schema" />
-				<referencedClass name="Doctrine\DBAL\Schema\SchemaException" />
-				<referencedClass name="Doctrine\DBAL\Schema\Table" />
-				<referencedClass name="Doctrine\DBAL\Statement" />
-			</errorLevel>
-		</UndefinedDocblockClass>
-	</issueHandlers>
 </psalm>
