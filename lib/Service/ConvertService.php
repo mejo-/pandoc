@@ -17,10 +17,9 @@ use Pandoc\Exceptions\UnknownOutputFormat;
 use Pandoc\Pandoc;
 
 class ConvertService {
-	private IRootFolder $rootFolder;
-
-	public function __construct(IRootFolder $rootFolder) {
-		$this->rootFolder = $rootFolder;
+	public function __construct(
+		private IRootFolder $rootFolder,
+	) {
 	}
 
 	/**

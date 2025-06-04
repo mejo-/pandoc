@@ -1,6 +1,14 @@
 build/
-\.idea/
-js/
 node_modules/
-vendor/
-tests/.phpunit.result.cache
+/vendor/
+
+# Editor directories and files
+.idea/
+js/*
+
+# PHP-CS-Fixer cache
+.php-cs-fixer.cache
+
+# Cypress test artifacts
+cypress/screenshots/
+cypress/videos/

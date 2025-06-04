@@ -4,7 +4,7 @@
     "license": "AGPL-3.0-or-later",
     "config": {
         "platform": {
-            "php": "7.4"
+            "php": "8.0"
         },
         "sort-packages": true
     },
@@ -15,14 +15,15 @@
       "lint": "find . -name \\*.php -not -path './vendor/*' -exec php -l \"{}\" \\;",
       "cs:check": "php-cs-fixer fix --dry-run --diff",
       "cs:fix": "php-cs-fixer fix",
-      "psalm": "psalm.phar",
+      "psalm": "psalm.phar --no-cache --threads=$(nproc)",
       "psalm:update-baseline": "psalm.phar --threads=1 --update-baseline --set-baseline=tests/psalm-baseline.xml",
       "test:unit": "phpunit -c tests/phpunit.xml"
     },
     "require-dev": {
         "nextcloud/coding-standard": "^1.3",
-        "nextcloud/ocp": "dev-stable25",
+        "nextcloud/ocp": "dev-stable29",
         "phpunit/phpunit": "^9.6",
-        "psalm/phar": "^5.26"
+        "psalm/phar": "^6.5",
+        "rector/rector": "^2.0"
     }
 }

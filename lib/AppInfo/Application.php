@@ -18,9 +18,6 @@ class Application extends App implements IBootstrap {
 		parent::__construct(self::APP_ID, $urlParams);
 	}
 
-	/**
-	 * @param IRegistrationContext $context
-	 */
 	public function register(IRegistrationContext $context): void {
 		include_once __DIR__ . '/../../vendor/autoload.php';
 		$context->registerEventListener(CollectivesLoadAdditionalScriptsEvent::class, CollectivesLoadAdditionalScriptsListener::class);
