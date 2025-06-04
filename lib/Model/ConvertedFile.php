@@ -3,12 +3,10 @@
 namespace OCA\Pandoc\Model;
 
 class ConvertedFile {
-	private string $name;
-	private string $content;
-
-	public function __construct(string $name, string $content) {
-		$this->name = $name;
-		$this->content = $content;
+	public function __construct(
+		private string $name,
+		private string $content,
+	) {
 	}
 
 	/**

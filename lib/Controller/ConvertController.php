@@ -12,19 +12,14 @@ use OCP\IRequest;
 use OCP\IUserSession;
 
 class ConvertController extends Controller {
-	private ConvertService $convertService;
-	private IUserSession $userSession;
-	private IConfig $config;
-
-	public function __construct(string $appName,
+	public function __construct(
+		string $appName,
 		IRequest $request,
-		ConvertService $convertService,
-		IUserSession $userSession,
-		IConfig $config) {
+		private ConvertService $convertService,
+		private IUserSession $userSession,
+		private IConfig $config,
+	) {
 		parent::__construct($appName, $request);
-		$this->convertService = $convertService;
-		$this->userSession = $userSession;
-		$this->config = $config;
 	}
 
 	/**
