@@ -1,21 +1,23 @@
 <?xml version="1.0"?>
 <psalm
-    errorLevel="4"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="https://getpsalm.org/schema/config"
-    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
-    errorBaseline="tests/psalm-baseline.xml"
+	errorLevel="4"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://getpsalm.org/schema/config"
+	xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+	errorBaseline="tests/psalm-baseline.xml"
+	findUnusedBaselineEntry="true"
+	phpVersion="7.4"
 >
 	<stubs>
 		<file name="tests/stub.phpstub" preloadClasses="true"/>
 	</stubs>
-    <projectFiles>
-        <directory name="lib" />
-    </projectFiles>
-    <extraFiles>
-        <directory name="vendor/nextcloud/ocp" />
-    </extraFiles>
-    	<issueHandlers>
+	<projectFiles>
+		<directory name="lib" />
+	</projectFiles>
+	<extraFiles>
+		<directory name="vendor/nextcloud/ocp" />
+	</extraFiles>
+		<issueHandlers>
 		<UndefinedClass>
 			<errorLevel type="suppress">
 				<referencedClass name="OC" />
