@@ -2,9 +2,8 @@
 
 namespace OCA\Pandoc\Service;
 
-use OC\Files\Node\File;
-use OC\User\NoUserException;
 use OCA\Pandoc\Model\ConvertedFile;
+use OCP\Files\File;
 use OCP\Files\IRootFolder;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
@@ -23,12 +22,6 @@ class ConvertService {
 	}
 
 	/**
-	 * @param string $userId
-	 * @param int $fileId
-	 * @param string $to
-	 * @param string $from
-	 *
-	 * @return string
 	 * @throws InputFileNotFound
 	 * @throws LockedException
 	 * @throws LogFileNotWriteable
@@ -50,14 +43,14 @@ class ConvertService {
 
 		try {
 			$userFolder = $this->rootFolder->getUserFolder($userId);
-		} catch (NotPermittedException|NoUserException $e) {
+		} catch (NotPermittedException $e) {
 			throw new NotPermittedException($e->getMessage(), 0, $e);
 		}
 
 		$files = $userFolder->getById($fileId);
 
 		if (count($files) <= 0 || !($files[0] instanceof File)) {
-			throw new NotFoundException('File not found: ' . $fileId);
+			throw new NotFoundException('File not found: ' . (string)$fileId);
 		}
 		$file = $files[0];
 
