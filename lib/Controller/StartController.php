@@ -14,8 +14,6 @@ class StartController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
-	 *
-	 * @return TemplateResponse
 	 */
 	public function index(): TemplateResponse {
 		return new TemplateResponse('pandoc', 'main', [

@@ -5,15 +5,4 @@
       <code>CollectivesLoadAdditionalScriptsEvent</code>
     </UndefinedClass>
   </file>
-  <file src="lib/Controller/ConvertController.php">
-    <InvalidMethodCall occurrences="2">
-      <code>getContent</code>
-      <code>getName</code>
-    </InvalidMethodCall>
-  </file>
-  <file src="lib/Service/ConvertService.php">
-    <MismatchingDocblockReturnType occurrences="1">
-      <code>string</code>
-    </MismatchingDocblockReturnType>
-  </file>
 </files>
