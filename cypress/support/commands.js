@@ -1,5 +1,5 @@
 import axios from '@nextcloud/axios'
-import { createUser, logout } from '@nextcloud/cypress/commands'
+import { createUser, logout } from '@nextcloud/cypress/commands' // eslint-disable-line n/no-unpublished-import
 
 const url = Cypress.config('baseUrl').replace(/\/index.php\/?$/g, '')
 Cypress.env('baseUrl', url)
