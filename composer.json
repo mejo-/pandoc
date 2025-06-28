@@ -24,6 +24,6 @@
         "nextcloud/ocp": "dev-stable29",
         "phpunit/phpunit": "^9.6",
         "psalm/phar": "^6.5",
-        "rector/rector": "^2.0"
+        "rector/rector": "^2.1"
     }
 }
