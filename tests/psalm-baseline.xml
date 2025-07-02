@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="dev-master@">
+<files psalm-version="6.8.2@720ed6b578ac24f9543c65c3d4cecea0ff348ccd">
   <file src="lib/AppInfo/Application.php">
-    <UndefinedClass occurrences="1">
-      <code>CollectivesLoadAdditionalScriptsEvent</code>
+    <UndefinedClass>
+      <code><![CDATA[CollectivesLoadAdditionalScriptsEvent]]></code>
     </UndefinedClass>
   </file>
 </files>

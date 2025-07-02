@@ -43,6 +43,21 @@ php occ config:app:set --value="/usr/local/share/pandoc/data/bbcode_phpbb.lua"
 -- pandoc default_output_format
 ```
 
+### PDF support
+
+Pandoc requires a separate PDF engine to be used to convert files to PDF. The
+engine can be configured and will be passed as `--pdf-engine` option to pandoc
+directly.
+
+Pdflatex (from the texlive project) is one option. On Debian based systems, it
+can be installed with the `texlive-latex-base` package. The app will try to
+autodetect if pdflatex is installed, but for more advanced use cases the pdf
+engine can also be set manually:
+
+```
+occ config:app:set pandoc pdf_engine --type string --value=pdflatex
+```
+
 ## Maintainer
 
 * Jonas <jonas@freesources.org>

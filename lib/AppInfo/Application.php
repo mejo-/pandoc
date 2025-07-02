@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OCA\Pandoc\AppInfo;
 
 use OCA\Collectives\Events\CollectivesLoadAdditionalScriptsEvent;
+use OCA\Pandoc\ConversionProvider;
 use OCA\Pandoc\Listeners\CollectivesLoadAdditionalScriptsListener;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
@@ -21,6 +22,10 @@ class Application extends App implements IBootstrap {
 	public function register(IRegistrationContext $context): void {
 		include_once __DIR__ . '/../../vendor/autoload.php';
 		$context->registerEventListener(CollectivesLoadAdditionalScriptsEvent::class, CollectivesLoadAdditionalScriptsListener::class);
+
+		if (method_exists($context, 'registerFileConversionProvider')) {
+			$context->registerFileConversionProvider(ConversionProvider::class);
+		}
 	}
 
 	public function boot(IBootContext $context): void {
