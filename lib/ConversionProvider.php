@@ -16,7 +16,8 @@ use OCP\IL10N;
 use RuntimeException;
 
 class ConversionProvider implements IConversionProvider {
-	private ?array $types = null;
+	private ?array $typesTo = null;
+	private ?array $typesFrom = null;
 
 	public function __construct(
 		private IL10N $l10n,
@@ -39,8 +40,8 @@ class ConversionProvider implements IConversionProvider {
 
 	public function getSupportedMimeTypes(): array {
 		$types = [];
-		foreach ($this->getPandocTypes() as $mimeType => $input) {
-			foreach ($this->getPandocTypes() as $output) {
+		foreach ($this->getPandocTypesFrom() as $mimeType => $input) {
+			foreach ($this->getPandocTypesTo() as $output) {
 				$types[] = new ConversionMimeProvider(
 					$mimeType,
 					$output['mime'],
@@ -55,8 +56,8 @@ class ConversionProvider implements IConversionProvider {
 	public function convertFile(File $file, string $targetMimeType): mixed {
 		$fileContent = $file->getContent();
 
-		$from = $this->getPandocForMime($file->getMimeType());
-		$to = $this->getPandocForMime($targetMimeType);
+		$from = $this->getPandocForMime($file->getMimeType(), false);
+		$to = $this->getPandocForMime($targetMimeType, true);
 
 		if ($from === null || $to === null) {
 			throw new RuntimeException('Invalid source or target file format for pandoc conversion');
@@ -77,9 +78,9 @@ class ConversionProvider implements IConversionProvider {
 			->execute();
 	}
 
-	private function getPandocTypes(): array {
-		if ($this->types === null) {
-			$this->types = [
+	private function getPandocTypesFrom(): array {
+		if ($this->typesFrom === null) {
+			$this->typesFrom = [
 				'text/markdown' => [
 					'mime' => 'text/markdown',
 					'pandoc' => 'gfm',
@@ -110,12 +111,6 @@ class ConversionProvider implements IConversionProvider {
 					'extension' => 'rtf',
 					'name' => $this->l10n->t('RTF (.rtf)'),
 				],
-				'text/asciidoc' => [
-					'mime' => 'text/asciidoc',
-					'pandoc' => 'asciidoc',
-					'extension' => 'asciidoc',
-					'name' => $this->l10n->t('Asciidoc (.asciidoc)'),
-				],
 				'text/plain' => [
 					'mime' => 'text/plain',
 					'pandoc' => 'txt',
@@ -123,8 +118,23 @@ class ConversionProvider implements IConversionProvider {
 					'name' => $this->l10n->t('Text (.txt)'),
 				],
 			];
+		}
+
+		return $this->typesFrom;
+	}
+
+	private function getPandocTypesTo(): array {
+		if ($this->typesTo === null) {
+			$this->typesTo = $this->getPandocTypesFrom();
+
+			$this->typesTo['text_asciidoc'] = [
+				'mime' => 'text/asciidoc',
+				'pandoc' => 'asciidoc',
+				'extension' => 'asciidoc',
+				'name' => $this->l10n->t('Asciidoc (.asciidoc)'),
+			];
 			if ($this->getPDFEngine() !== '') {
-				$this->types['application/pdf'] = [
+				$this->typesTo['application/pdf'] = [
 					'mime' => 'application/pdf',
 					'pandoc' => 'pdf',
 					'extension' => 'pdf',
@@ -133,11 +143,13 @@ class ConversionProvider implements IConversionProvider {
 			}
 		}
 
-		return $this->types;
+		return $this->typesTo;
 	}
 
-	private function getPandocForMime(string $mimeType): ?string {
-		$type = $this->getPandocTypes()[$mimeType] ?? null;
+	private function getPandocForMime(string $mimeType, bool $targetMime): ?string {
+		$type = $targetMime
+			? $this->getPandocTypesTo()[$mimeType] ?? null
+			: $this->getPandocTypesFrom()[$mimeType] ?? null;
 		if ($type === null) {
 			return null;
 		}
