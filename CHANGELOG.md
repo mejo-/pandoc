@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.9.0 - 2025.07.02
+
+### ✨New
+- 🚀 Add file conversion provider. Thanks @juliusknorr.
+
+### 🚧Updates & Tooling
+- 👷 Update PHP dependencies.
+- 🔌 Update NPM dependencies.
+
+
 ## 0.8.0 - 2025.06.04
 
 ### ✨New
