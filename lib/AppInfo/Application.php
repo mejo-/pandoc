@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OCA\Pandoc\AppInfo;
 
 use OCA\Collectives\Events\CollectivesLoadAdditionalScriptsEvent;
+use OCA\Pandoc\Capabilities;
 use OCA\Pandoc\ConversionProvider;
 use OCA\Pandoc\Listeners\CollectivesLoadAdditionalScriptsListener;
 use OCP\AppFramework\App;
@@ -25,6 +26,9 @@ class Application extends App implements IBootstrap {
 
 		if (method_exists($context, 'registerFileConversionProvider')) {
 			$context->registerFileConversionProvider(ConversionProvider::class);
+
+			// Capabilities register declarative UI actions for file conversion
+			$context->registerCapability(Capabilities::class);
 		}
 	}
 
