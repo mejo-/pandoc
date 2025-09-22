@@ -29,7 +29,7 @@ class Capabilities implements ICapability {
 					'targetMimeType' => 'text/markdown',
 				]),
 				'method' => 'POST',
-				'params' => ['fileId'],
+				'params' => ['file_id' => '{fileId}'],
 				'filter' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 			]
 		];
