@@ -10,9 +10,11 @@ namespace OCA\Pandoc;
 use OCA\Pandoc\AppInfo\Application;
 use OCP\Capabilities\ICapability;
 use OCP\IL10N;
+use OCP\IURLGenerator;
 
 class Capabilities implements ICapability {
 	public function __construct(
+		private IURLGenerator $url,
 		private IL10N $l10n,
 	) {
 	}
@@ -27,6 +29,7 @@ class Capabilities implements ICapability {
 				'method' => 'POST',
 				'params' => ['file_id' => '{fileId}'],
 				'filter' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+				'icon' => $this->url->imagePath(Application::APP_ID, 'md.svg'),
 			]
 		];
 
