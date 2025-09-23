@@ -27,8 +27,8 @@ class Capabilities implements ICapability {
 				'name' => $this->l10n->t('Convert to Markdown (.md)'),
 				'url' => $conversionEndpoint . '?' . http_build_query(['targetMimeType' => 'text/markdown']),
 				'method' => 'POST',
-				'params' => ['file_id' => '{fileId}'],
-				'filter' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+				'params' => ['fileId' => '{fileId}'],
+				'mimetype_filters' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 				'icon' => $this->url->imagePath(Application::APP_ID, 'md.svg'),
 			]
 		];
