@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.9.1 - 2025.10.26
+
+### ✨New
+- ✨ Add support for Nextcloud 32.
+
+### 🐛Fixes
+- 🐛 Add collectives as dependency app when loading JS asset.
+
+### 🚧Updates & Tooling
+- 👷 Update PHP dependencies.
+- 🔌 Update NPM dependencies.
+
+
 ## 0.9.0 - 2025.07.02
 
 ### ✨New

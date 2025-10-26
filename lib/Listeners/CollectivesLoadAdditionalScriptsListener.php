@@ -12,6 +12,6 @@ use OCP\Util;
 /** @template-implements IEventListener<Event|BeforeTemplateRenderedEvent> */
 class CollectivesLoadAdditionalScriptsListener implements IEventListener {
 	public function handle(Event $event): void {
-		Util::addScript('pandoc', 'pandoc-collectives');
+		Util::addScript('pandoc', 'pandoc-collectives', 'collectives');
 	}
 }
