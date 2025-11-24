@@ -34,8 +34,9 @@ class Capabilities implements ICapability {
 		];
 
 		return [
-			'declarativeui' => [
+			'client_integration' => [
 				Application::APP_ID => [
+					'version' => 0.1,
 					'context-menu' => $menuItems,
 				],
 			],
