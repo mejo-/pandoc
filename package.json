@@ -38,7 +38,7 @@
     "@nextcloud/e2e-test-server": "^0.4.0",
     "@nextcloud/eslint-config": "^8.4.2",
     "@nextcloud/event-bus": "^3.3.3",
-    "@nextcloud/stylelint-config": "^3.1.1",
+    "@nextcloud/stylelint-config": "^3.2.2",
     "@nextcloud/webpack-vue-config": "^6.3.2",
     "@vitejs/plugin-vue2": "^2.3.4",
     "@vue/tsconfig": "^0.5.1",
