@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="6.8.2@720ed6b578ac24f9543c65c3d4cecea0ff348ccd">
+<files psalm-version="6.12.0@cf420941d061a57050b6c468ef2c778faf40aee2">
   <file src="lib/AppInfo/Application.php">
     <UndefinedClass>
       <code><![CDATA[CollectivesLoadAdditionalScriptsEvent]]></code>
