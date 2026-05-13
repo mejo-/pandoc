@@ -1,6 +1,4 @@
 module.exports = {
-    extends: [
-        '@nextcloud',
-        'plugin:cypress/recommended',
-    ],
+	root: true,
+    extends: [ '@nextcloud' ],
 }

@@ -191,7 +191,7 @@ export default {
 	display: flex;
 	justify-content: flex-end;
 	padding-top: 8px;
-	padding-right: 8px;
+	padding-inline-end: 8px;
 	// make buttons float
 	margin-bottom: -52px;
 	z-index: 1;

@@ -63,7 +63,7 @@ class ConversionProvider implements IConversionProvider {
 			throw new RuntimeException('Invalid source or target file format for pandoc conversion');
 		}
 
-		$pandoc = new \Pandoc\Pandoc;
+		$pandoc = new \Pandoc\Pandoc(['command' => '/usr/bin/pandoc']);
 		$pandoc
 			->input($fileContent)
 			->option('from', $from)

@@ -120,6 +120,7 @@ build: node-modules build-js-production composer-install-no-dev
 		--exclude="/$(APP_NAME)/psalm.xml" \
 		--exclude="/$(APP_NAME)/src" \
 		--exclude="/$(APP_NAME)/stylelint.config.js" \
+		--exclude="/$(APP_NAME)/tsconfig.json" \
 		--exclude="/$(APP_NAME)/tests" \
 		--exclude="/$(APP_NAME)/webpack.*" \
 	$(PROJECT_DIR) $(RELEASE_DIR)/
