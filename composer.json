@@ -24,6 +24,6 @@
         "nextcloud/ocp": "dev-stable32",
         "phpunit/phpunit": "^9.6",
         "rector/rector": "^2.2",
-        "vimeo/psalm": "6.12"
+        "vimeo/psalm": "6.16.1"
     }
 }
