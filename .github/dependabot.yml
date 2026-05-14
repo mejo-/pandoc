@@ -29,6 +29,8 @@ updates:
     versions: ["^3"]
   - dependency-name: "vuex"
     versions: ["^4"]
+  - dependency-name: "vue-loader"
+    versions: ["^1[67]"]
   open-pull-requests-limit: 10
   labels:
   - 3. to review
