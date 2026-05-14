@@ -46,6 +46,6 @@
     "cypress-vite": "^1.10.0",
     "eslint-plugin-cypress": "^3.6.0",
     "vite-plugin-node-polyfills": "^0.26.0",
-    "vue-loader": "^15.11.1"
+    "vue-loader": "^17.4.2"
   }
 }
