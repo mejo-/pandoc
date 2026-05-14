@@ -21,6 +21,10 @@ updates:
     timezone: Europe/Paris
   versioning-strategy: increase
   ignore:
+  - dependency-name: "@nextcloud/dialogs"
+    versions: ["^7"]
+  - dependency-name: "@nextcloud/vue"
+    versions: ["^9"]
   - dependency-name: "vue"
     versions: ["^3"]
   - dependency-name: "vuex"
