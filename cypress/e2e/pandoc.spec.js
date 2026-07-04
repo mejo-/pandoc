@@ -42,6 +42,5 @@ describe('Open pandoc app frontend', function() {
 				cy.get('.file-content-pre', { timeout: Cypress.config('defaultCommandTimeout') * 3 })
 					.should('contain', 'Paragraph with some')
 			})
-
 	})
 })

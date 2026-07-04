@@ -22,7 +22,7 @@ export default {
 
 				// Notify success
 				showSuccess(t('pandoc', 'Copied to the clipboard.'))
-			} catch (error) {
+			} catch {
 				this.copySuccess = false
 				this.copied = true
 				showError(t('pandoc', 'Could not copy to the clipboard'))

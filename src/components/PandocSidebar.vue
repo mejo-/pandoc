@@ -1,9 +1,11 @@
 <template>
-	<NcAppSidebar :title="t('pandoc', 'Converted files')"
+	<NcAppSidebar
+		:title="t('pandoc', 'Converted files')"
 		@close="closeSidebar">
-		<NcActionCheckbox v-for="file in convertedFiles"
+		<NcActionCheckbox
+			v-for="file in convertedFiles"
 			:key="file.fileId"
-			:checked="!file.hide"
+			:model-value="!file.hide"
 			@change="toggleHideFile(file.fileId)">
 			{{ file.name }}
 		</NcActionCheckbox>
@@ -11,12 +13,12 @@
 </template>
 
 <script>
-import NcActionCheckbox from '@nextcloud/vue/dist/Components/NcActionCheckbox.js'
-import NcAppSidebar from '@nextcloud/vue/dist/Components/NcAppSidebar.js'
 import { mapMutations, mapState } from 'vuex'
+import NcActionCheckbox from '@nextcloud/vue/components/NcActionCheckbox'
+import NcAppSidebar from '@nextcloud/vue/components/NcAppSidebar'
 
 export default {
-	name: 'Sidebar',
+	name: 'PandocSidebar',
 
 	components: {
 		NcActionCheckbox,

@@ -11,11 +11,11 @@ export default new Store({
 
 	getters: {
 		filteredConvertedFiles: (state) => {
-			return state.convertedFiles.filter(f => f.hide !== true)
+			return state.convertedFiles.filter((f) => f.hide !== true)
 		},
 
 		displayedFileContents: (state, getters) => {
-			return getters.filteredConvertedFiles.map(f => f.content)
+			return getters.filteredConvertedFiles.map((f) => f.content)
 				.join('\n\n')
 		},
 	},
@@ -34,8 +34,8 @@ export default new Store({
 		},
 
 		toggleHideFile: (state, fileId) => {
-			state.convertedFiles.find(f => f.fileId === fileId).hide
-				= !state.convertedFiles.find(f => f.fileId === fileId).hide
+			state.convertedFiles.find((f) => f.fileId === fileId).hide
+				= !state.convertedFiles.find((f) => f.fileId === fileId).hide
 		},
 	},
 })

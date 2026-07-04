@@ -10,7 +10,7 @@ Vue.prototype.OCA = OCA
 const app = new Vue({
 	el: '#content',
 	store,
-	render: h => h(App),
+	render: (h) => h(App),
 })
 
 export default app

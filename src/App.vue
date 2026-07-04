@@ -1,15 +1,15 @@
 <template>
 	<NcContent app-name="pandoc">
 		<PandocView />
-		<Sidebar v-if="showSidebar" />
+		<PandocSidebar v-if="showSidebar" />
 	</NcContent>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import NcContent from '@nextcloud/vue/dist/Components/NcContent.js'
+import NcContent from '@nextcloud/vue/components/NcContent'
+import PandocSidebar from './components/PandocSidebar.vue'
 import PandocView from './views/PandocView.vue'
-import Sidebar from './components/Sidebar.vue'
 
 export default {
 	name: 'App',
@@ -17,7 +17,7 @@ export default {
 	components: {
 		NcContent,
 		PandocView,
-		Sidebar,
+		PandocSidebar,
 	},
 
 	computed: {
