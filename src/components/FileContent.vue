@@ -8,13 +8,15 @@
 				</template>
 				{{ copyButtonText }}
 			</NcButton>
-			<NcActionButton icon="icon-menu-sidebar"
+			<NcActionButton
+				icon="icon-menu-sidebar"
 				:aria-label="t('pandoc', 'Open sidebar')"
 				@click="toggleSidebar" />
 		</div>
 
 		<!-- loading -->
-		<NcEmptyContent v-show="loading"
+		<NcEmptyContent
+			v-show="loading"
 			:title="t('pandoc', 'Converting files')">
 			<template #icon>
 				<DownloadIcon />
@@ -31,7 +33,8 @@
 		</NcEmptyContent>
 
 		<!-- error message -->
-		<NcEmptyContent v-show="!loading && error"
+		<NcEmptyContent
+			v-show="!loading && error"
 			:title="t('pandock', 'Error')">
 			<template #icon>
 				<AlertOctagonIcon />
@@ -43,7 +46,8 @@
 
 		<!-- converted content -->
 		<div v-show="!loading && !error" class="file-content">
-			<div v-for="(file, index) in filteredConvertedFiles"
+			<div
+				v-for="(file, index) in filteredConvertedFiles"
 				:key="file.fileId">
 				<pre class="file-content-pre">{{ file.content }}</pre>
 				<template v-if="index !== filteredConvertedFiles.length - 1">
@@ -56,17 +60,17 @@
 
 <script>
 import axios from '@nextcloud/axios'
-import { generateUrl } from '@nextcloud/router'
 import { showError } from '@nextcloud/dialogs'
-import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
-import NcProgressBar from '@nextcloud/vue/dist/Components/NcProgressBar.js'
+import { generateUrl } from '@nextcloud/router'
+import { mapGetters, mapMutations } from 'vuex'
+import NcActionButton from '@nextcloud/vue/components/NcActionButton'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcEmptyContent from '@nextcloud/vue/components/NcEmptyContent'
+import NcProgressBar from '@nextcloud/vue/components/NcProgressBar'
 import AlertOctagonIcon from 'vue-material-design-icons/AlertOctagon.vue'
-import ContentPasteIcon from 'vue-material-design-icons/ContentPaste.vue'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
+import ContentPasteIcon from 'vue-material-design-icons/ContentPaste.vue'
 import DownloadIcon from 'vue-material-design-icons/Download.vue'
-import { mapGetters, mapMutations, mapState } from 'vuex'
 import CopyToClipboardMixin from '../mixins/CopyToClipboardMixin.js'
 
 export default {
@@ -104,8 +108,6 @@ export default {
 	},
 
 	computed: {
-		...mapState(['convertedFiles']),
-
 		...mapGetters([
 			'displayedFileContents',
 			'filteredConvertedFiles',
@@ -130,7 +132,7 @@ export default {
 					return undefined
 				}
 				return id
-			}).filter(id => id !== undefined)
+			}).filter((id) => id !== undefined)
 		},
 
 		loadingProgress() {
@@ -167,7 +169,7 @@ export default {
 					file.fileId = fileId
 					this.addConvertedFile(file)
 					this.loadCount += 1
-				} catch (e) {
+				} catch {
 					console.error('Failed to convert the content of file with fileId ', fileId)
 					this.error = t('pandoc', 'Could not convert the content of file with fileId ' + fileId)
 					this.loading = false

@@ -19,9 +19,7 @@ Cypress.Commands.overwrite('login', (login, user) => {
 		win.location.href = 'about:blank'
 	})
 	login(user)
-	cy.request('/csrftoken', silent).then(({ body }) =>
-		emit('csrf-token-update', body),
-	)
+	cy.request('/csrftoken', silent).then(({ body }) => emit('csrf-token-update', body))
 	cy.wrap(user, silent).as('currentUser')
 })
 
@@ -37,9 +35,7 @@ Cypress.Commands.add('uploadFile', (fileName, mimeType) => {
 					{ headers: { 'Content-Type': mimeType } },
 				)
 				.then((response) => {
-					const fileId = Number(
-						response.headers['oc-fileid']?.split('oc')?.[0],
-					)
+					const fileId = Number(response.headers['oc-fileid']?.split('oc')?.[0])
 					cy.log(`Uploaded ${fileName} to ${fileId}`, response.status)
 					return cy.wrap(fileId, silent)
 				})

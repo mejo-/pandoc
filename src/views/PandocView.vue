@@ -8,14 +8,16 @@
 				{{ t('pandoc', 'Missing fileIds (in URL query string)') }}
 			</template>
 		</NcEmptyContent>
-		<FileContent v-if="fileIds"
+
+		<FileContent
+			v-if="fileIds"
 			:file-ids="fileIds" />
 	</NcAppContent>
 </template>
 
 <script>
-import NcAppContent from '@nextcloud/vue/dist/Components/NcAppContent.js'
-import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
+import NcAppContent from '@nextcloud/vue/components/NcAppContent'
+import NcEmptyContent from '@nextcloud/vue/components/NcEmptyContent'
 import AlertOctagonIcon from 'vue-material-design-icons/AlertOctagon.vue'
 import FileContent from '../components/FileContent.vue'
 
@@ -47,6 +49,7 @@ export default {
 	},
 }
 </script>
+
 <style scoped>
 [v-cloak] {
 	display: none;
