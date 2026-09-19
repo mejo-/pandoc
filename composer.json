@@ -23,7 +23,7 @@
         "nextcloud/coding-standard": "^1.5",
         "nextcloud/ocp": "dev-stable32",
         "phpunit/phpunit": "^9.6",
-        "rector/rector": "^2.5",
+        "rector/rector": "^2.6",
         "vimeo/psalm": "6.16.1"
     }
 }
